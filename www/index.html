@@ -1,38 +1,61 @@
-<html lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-    <!-- Angular Material style sheet -->
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-</head>
-<body ng-app="BlankApp" ng-cloak>
-<!--
-  View
--->
-<div layout-fill ng-view></div>
+<!DOCTYPE html>
+<html ng-app="ngapp">
 
-<!-- Angular Material requires Angular.js Libraries -->
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-animate/angular-animate.min.js"></script>
-<script src="bower_components/angular-aria/angular-aria.min.js"></script>
-<script src="bower_components/angular-messages/angular-messages.min.js"></script>
-<script src="bower_components/angular-material/angular-material.min.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.min.js"></script>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Security-Policy">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
-<!-- Angular Material Library -->
-<script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="cordova.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
 
-<!-- Angular Controllers -->
-<script src="controllers/MainController.js"></script>
-<script src="controllers/PokemonDetailController.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/angular-material.css">
 
+    <link rel="stylesheet" type="text/css" href="assets/css/angular-material-icons.css">
 
-<!-- Angular Services -->
-<script src="services/dataservice.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700">
 
-</body>
+    <!-- AngularJs -->
+    <script type="text/javascript" src="assets/lib/angular.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-aria.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="assets/lib/ngStorage.min.js"></script>
+    <script type="text/javascript" src="assets/lib/ngTouch.min.js"></script>
+
+    <!-- Angular Material -->
+    <script type="text/javascript" src="assets/lib/angular-material-icons.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-material.js"></script>
+    
+    <!--Overig (Guus)-->
+    <script src="assets/lib/angular-resource.js"></script>
+    
+
+    <!-- Cordova -->
+    <script type="text/javascript" src="assets/lib/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- Modules -->
+    <script type="text/javascript" src="app/app.js"></script>
+
+    <!-- Routes -->
+    <script type="text/javascript" src="app/routes.js"></script>
+
+    <!-- Services -->
+    <script type="text/javascript" src="app/shared/shared-service.js"></script>
+
+    <!-- Controllers -->
+    <script type="text/javascript" src="app/components/main/main-controller.js"></script>
+    <script type="text/javascript" src="app/components/PokeDetail/main-controller.js"></script>
+
+    <title>NgApp</title>
+  </head>
+
+  <body style="position: fixed;" ng-cloak>
+
+    <ui-view></ui-view>
+
+  </body>
 </html>
