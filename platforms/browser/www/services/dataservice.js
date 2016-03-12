@@ -17,5 +17,5 @@ app.factory('PokemonService', function ($resource) {
 
     //
     var data
-    return $resource('http://pokeapi.co/api/v2/pokemon/?limit=20');
+    return $resource('http://pokeapi.co/api/v2/pokemon/:id/?limit=20');
 });

@@ -6,7 +6,7 @@
             <div class="md-list-item-text" layout="column">
                 <h3> {{ pokemon.name }}</h3>
             </div>
-            <md-button href="#showPokemon" class="md-secondary" ng-click="showDetails()">&gt;</md-button>
+            <md-button id="{{pokemon.name}}" ng-href="#showPokemon/{{pokemon.name}}" class="md-secondary">&gt;</md-button>
         </md-list-item>
     </md-list>
 </md-content>
