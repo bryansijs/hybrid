@@ -1,33 +1,26 @@
 "use strict";
 
-angular.module("ngapp").controller("MainController", function(shared, $state, $scope, $mdSidenav, $mdComponentRegistry){
-
-    var ctrl = this;
-
-    this.auth = shared.info.auth;
-
-    this.toggle = angular.noop;
+angular.module("ngapp").controller("mainController", function(shared, menu, language, data, $state, $scope){
 
     this.title = $state.current.title;
 
+    $scope.name = shared.info.auth;
+    $scope.menu = menu;
+    $scope.lan = language;
 
-    this.isOpen = function() { return false };
-    $mdComponentRegistry
-    .when("left")
-    .then( function(sideNav){
-      ctrl.isOpen = angular.bind( sideNav, sideNav.isOpen );
-      ctrl.toggle = angular.bind( sideNav, sideNav.toggle );
-    });
+    $scope.init = function() {
+        language.setLanguage();
+        data.checkForupdates();
+        $scope.pokemons = shared.pokemons;
+        console.log(shared.pokemons);
+    }
 
-    this.toggleRight = function() {
-    $mdSidenav("left").toggle()
-        .then(function(){
-        });
-    };
+    $scope.goDetail = function(pokemon) {
+        shared.currentPokemon = pokemon;
+        location.replace("#/detail");
+    }
 
-    this.close = function() {
-    $mdSidenav("right").close()
-        .then(function(){
-        });
-    };
+    $scope.goMap = function() {
+        location.replace("#/map");
+    }
 });

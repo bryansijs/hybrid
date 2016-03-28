@@ -2,8 +2,9 @@
 
 angular.module("ngapp").service("shared", function(){ // One of The Ways To Share Informations Across the Controllers
 
+    this.pokemons = [];
+    this.currentPokemon = {};
     this.info = {
-        title: "cordova-angular-angularMaterial-seed",
-        auth: "Mario Aleo"
+        auth: window.localStorage['name'] || ''
     };
 });
