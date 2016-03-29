@@ -18,7 +18,6 @@ angular.module("ngapp").service("data", function($resource, shared, location){
 
     var getPokemonFromApi = function(id) {
         var resource = $resource( url + id + "/").get();
-
         resource.$promise.then(function(data) {
             var pokemon = {};
             pokemon.id = data.id;
@@ -30,13 +29,17 @@ angular.module("ngapp").service("data", function($resource, shared, location){
             pokemon.longitude = getRandomNumber(location.gps.longitude);
             pokemon.height = data.height;
             pokemon.weight = data.weight;
+            //pokemon.catched = "true";
             pokemon.base_experience = data.base_experience;
             pokemon.order = data.order;
             window.localStorage.setItem("pokemon_"+data.id , JSON.stringify(pokemon));
-            shared.pokemons.push(pokemon);
+
+            shared.pokemons[pokemon.id -1] = pokemon;
+
             count++;
 
             if(count == pokemonCount) {
+
                 var event = new CustomEvent("pokedex_ready");
                 document.dispatchEvent(event);
             }
@@ -57,7 +60,6 @@ angular.module("ngapp").service("data", function($resource, shared, location){
             var lastToday = window.localStorage.getItem("lastUpdatedDay");
             //if today > lastTody dan update behalve als today 0 is.
             if(today != lastToday && today > lastToday || today != lastToday && today == 0) {
-
                 var event = new CustomEvent("pokedex_ready");
                 document.dispatchEvent(event);
 
@@ -74,6 +76,10 @@ angular.module("ngapp").service("data", function($resource, shared, location){
             updatePokemon();
         }
     };
+
+    this.updatePokemonwithId = function(pokemon) {
+        window.localStorage.setItem("pokemon_"+pokemon.id , JSON.stringify(pokemon));
+    }
 
     var updatePokemon = function() {
         for(var i = 1; i <= pokemonCount; i++) {

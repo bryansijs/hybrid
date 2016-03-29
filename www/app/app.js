@@ -3,7 +3,7 @@
 angular.module("ngapp", [ "ngTouch", "ui.router", "ngMdIcons", "ngMaterial", "ngCordova", "ngStorage" ,"ngResource",'uiGmapgoogle-maps'])
 // ngTouch is No Longer Supported by Angular-Material
 
-.run(function($rootScope, $cordovaDevice, $state, $cordovaStatusbar){
+.run(function($rootScope, $cordovaDevice, $state, $cordovaStatusbar, $mdToast){
   document.addEventListener("deviceready", function () {
     $cordovaStatusbar.overlaysWebView(false); // Always Show Status Bar
     $cordovaStatusbar.styleHex('#E53935'); // Status Bar With Red Color, Using Angular-Material Style
@@ -14,6 +14,7 @@ angular.module("ngapp", [ "ngTouch", "ui.router", "ngMdIcons", "ngMaterial", "ng
       if($state.is("main")) {
           navigator.app.exitApp();
       }else {
+          $mdToast.hide();
         location.replace("#/main");
         $scope.apply();
       }

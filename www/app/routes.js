@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
+angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider, language){
 
     $urlRouterProvider.otherwise("/loading");
 

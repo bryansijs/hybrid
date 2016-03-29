@@ -23,7 +23,9 @@ angular.module("ngapp").service("language", function(){ // One of The Ways To Sh
         navigate_to: "Start navigation",
         myProfile: "My Profile",
         catchedPokemon: "Catched Pokemon",
-        fullName: "Full Name"
+        fullName: "Full Name",
+        inYourNeighbourhood: "Is near you. Throw your phone to catch him!",
+        addedToInventory : "Added to inventory"
     }
 
     var dutch = {
@@ -38,7 +40,9 @@ angular.module("ngapp").service("language", function(){ // One of The Ways To Sh
         navigate_to: "navigatie starten",
         myProfile: "Mijn Profiel",
         catchedPokemon: "Gevangen Pokemon",
-        fullName: "Volledige Naam: "
+        fullName: "Volledige Naam: ",
+        inYourNeighbourhood: "is in de buurt. Gooi je telefoon om hem te vangen!",
+        addedToInventory : "toegevoegd aan je verzameling"
     }
 
     this.updatePreferredLanguage = function(language) {

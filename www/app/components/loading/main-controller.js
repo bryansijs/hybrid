@@ -11,7 +11,7 @@ angular.module("ngapp").controller("loadingController", function(shared,language
     }
 
     document.addEventListener("pokedex_ready", function(e) {
-        location.replace("#/main");
+        window.location.replace("#/main");
     });
 
 });

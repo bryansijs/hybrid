@@ -10,7 +10,6 @@ angular.module("ngapp").controller("mainController", function(shared, menu, lang
 
     $scope.init = function() {
         language.setLanguage();
-        data.checkForupdates();
         $scope.pokemons = shared.pokemons;
         console.log(shared.pokemons);
     }

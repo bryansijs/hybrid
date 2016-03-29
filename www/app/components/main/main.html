@@ -3,12 +3,12 @@
   <div ng-include="'assets/html/settings_menu.html'"></div>
 
   <md-content>
-    <md-list style="overflow-y: scroll; height: 94vh">
+
       <md-list-item class="md-3-line" ng-repeat="pokemon in pokemons track by $index">
         <img src="{{ pokemon.sprites.front_default }}"/>
         <div class="md-list-item-text" ng-click="goDetail(pokemon)">
           <h3>{{ pokemon.name }}</h3>
-          <h4> {{ pokemon.url }} </h4>
+          <h4> {{ pokemon.catched }} </h4>
           <p ng-repeat="t in pokemon.types"> {{ t.type.name }}</p>
         </div>
         <div> {{pokemon.caugt }}</div>

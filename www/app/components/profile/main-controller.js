@@ -12,16 +12,19 @@ angular.module("ngapp").controller("profileController", function(shared, data,me
 
     $scope.init = function() {
         getCatchedPokemon();
-        $scope.updateProfilePicture = function() {
-            if(window.navigator.camera != undefined) {
-                window.navigator.camera.getPicture(function(imageData) {
-                    window.localStorage['profilePicture'] = imageData;
-                    $scope.pictureSrc = imageData;
-                }, function(error) {alert(error) }, { quality: 50,
-                    destinationType: Camera.DestinationType.FILE_URI });
-            } else {
-                cameraError("Platform not supported");
-            }
+
+
+    }
+
+    $scope.updateProfilePicture = function() {
+        if(window.navigator.camera != undefined) {
+            window.navigator.camera.getPicture(function(imageData) {
+                window.localStorage['profilePicture'] = imageData;
+                $scope.pictureSrc = imageData;
+            }, function(error) {alert(error) }, { quality: 50,
+                destinationType: Camera.DestinationType.FILE_URI });
+        } else {
+            cameraError("Platform not supported");
         }
     }
 
@@ -46,7 +49,7 @@ angular.module("ngapp").controller("profileController", function(shared, data,me
         var group = [];
         for(var i = 0; i < shared.pokemons.length; i++) {
 
-            if(shared.pokemons[i].catched != undefined && shared.pokemons[i].catched == true) {
+            if(shared.pokemons[i].catched == "true") {
                 count++;
                 group.push(shared.pokemons[i]);
             }
