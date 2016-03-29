@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").controller("profileController", function(shared, data,menu, language, $state, $scope, $mdDialog){
+angular.module("ngapp").controller("profileController", function(shared, $mdToast, data,menu, language, $state, $scope, $mdDialog){
 
     this.title = $state.current.title;
     $scope.menu = menu;
@@ -31,6 +31,7 @@ angular.module("ngapp").controller("profileController", function(shared, data,me
     var cameraSuccess = function(imageData) {
         window.localStorage['profilePicture'] = imageData;
         $scope.pictureSrc = imageData;
+        $mdToast.hide();
     }
 
     var cameraError = function(message) {

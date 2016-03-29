@@ -31,7 +31,7 @@ angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function
     }).state("profile", {
         url: "/profile",
         templateUrl: "app/components/profile/main.html",
-        title: "Profile page",
+        title: 'Profile page',
         controller: "profileController",
         controllerAs: "main"
     });
