@@ -1,9 +1,14 @@
 "use strict";
 
-angular.module("ngapp").controller("loadingController", function(shared,language , data, menu,$state, $scope){
+angular.module("ngapp").controller("loadingController", function(shared,language, location , data, menu,$state, $scope){
 
-    data.checkForupdates();
+
     $scope.lan = language;
+
+    $scope.init = function() {
+        data.checkForupdates();
+
+    }
 
     document.addEventListener("pokedex_ready", function(e) {
         location.replace("#/main");
