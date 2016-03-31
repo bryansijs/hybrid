@@ -24,10 +24,9 @@ angular.module("ngapp").controller("profileController", function(shared, $mdToas
                 window.localStorage['profilePicture'] = imageData;
                 $scope.pictureSrc = imageData;
                 $scope.$apply();
-            }, function(error) {alert(error) }, { quality: 50,
+            }, function(error) { cameraError("Error getting photo") }, { quality: 50,
                 destinationType: Camera.DestinationType.FILE_URI });
         } else {
-            alert("2");
             cameraError("Platform not supported");
         }
     }

@@ -26,7 +26,8 @@ angular.module("ngapp").service("language", function(){ // One of The Ways To Sh
         fullName: "Full Name",
         inYourNeighbourhood: "Is near you. Throw your phone to catch him!",
         addedToInventory : "Added to inventory",
-        moreInfo: "More info"
+        moreInfo: "More info",
+        title_main: "Pokedex"
     }
 
     var dutch = {
@@ -44,7 +45,8 @@ angular.module("ngapp").service("language", function(){ // One of The Ways To Sh
         fullName: "Volledige Naam: ",
         inYourNeighbourhood: "is in de buurt. Gooi je telefoon om hem te vangen!",
         addedToInventory : "toegevoegd aan je verzameling",
-        moreInfo: "Meer informatie"
+        moreInfo: "Meer informatie",
+        title_main: "Pokedex Dutch"
     }
 
     this.updatePreferredLanguage = function(language) {
