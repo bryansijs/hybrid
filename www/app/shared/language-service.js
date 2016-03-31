@@ -27,7 +27,7 @@ angular.module("ngapp").service("language", function(){ // One of The Ways To Sh
         inYourNeighbourhood: "Is near you. Throw your phone to catch him!",
         addedToInventory : "Added to inventory",
         moreInfo: "More info",
-        isYourCurrentName: "is Your Current Name",
+		isYourCurrentName: "is Your Current Name",
         yourName: "your name",
         newName: "newName",
         titleDetail: "Pokemon Details",

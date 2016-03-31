@@ -11,22 +11,21 @@ angular.module("ngapp").service("location", function(){ // One of The Ways To Sh
     };
 
     this.setLocation = function() {
+        if(navigator.geolocation) {
 
+            navigator.geolocation.getCurrentPosition(function(position) {
+                ctrl.gps.latitude = position.coords.latitude;
+                ctrl.gps.longitude = position.coords.longitude;
+                console.log(position);
+            }, function(error) {
+                console.log(error);
+            })
+        } else {
+            alert("location set undefined");
+        }
 
     };
 
-    //ctrl.setLocation();
+    ctrl.setLocation();
 
 });
-//if(navigator.geolocation) {
-//
-//    navigator.geolocation.getCurrentPosition(function(position) {
-//        ctrl.gps.latitude = position.coords.latitude;
-//        ctrl.gps.longitude = position.coords.longitude;
-//        console.log(position);
-//    }, function(error) {
-//        console.log(error);
-//    })
-//} else {
-//    alert("location set undefined");
-//}

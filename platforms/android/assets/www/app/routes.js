@@ -19,7 +19,7 @@ angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function
     }).state("map", {
         url: "/map",
         templateUrl: "app/components/map/main.html",
-        title: "Pokedex Map",
+        title: "Pokedex Detail Page",
         controller: "mapController",
         controllerAs: "main"
     }).state("loading", {

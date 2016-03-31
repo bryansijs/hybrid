@@ -1,10 +1,9 @@
 "use strict";
 
-angular.module("ngapp").controller("mainController", function(shared, menu, language, location, data, $state, $scope){
+angular.module("ngapp").controller("mainController", function(shared, menu, language, data, $state, $scope){
 
-    location.setLocation();
+    this.title = $state.current.title;
 
-    $scope.title = $state.current.title;
     $scope.name = shared.info.auth;
     $scope.menu = menu;
     $scope.lan = language;
@@ -12,15 +11,16 @@ angular.module("ngapp").controller("mainController", function(shared, menu, lang
 
     $scope.init = function() {
         language.setLanguage();
+        $scope.pokemons = shared.pokemons;
         console.log(shared.pokemons);
     }
 
     $scope.goDetail = function(pokemon) {
         shared.currentPokemon = pokemon;
-        window.location.replace("#/detail");
+        location.replace("#/detail");
     }
 
     $scope.goMap = function() {
-        window.location.replace("#/map");
+        location.replace("#/map");
     }
 });

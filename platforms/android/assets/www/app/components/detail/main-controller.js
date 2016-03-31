@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("ngapp").controller("detailController", function(shared, menu, language, location, $state, $scope, $mdDialog){
-    $scope.title = language.str.titleDetail;
+    this.title = $state.current.title;
     $scope.name = shared.info.auth;
     $scope.menu = menu;
     $scope.lan = language;
@@ -13,28 +13,25 @@ angular.module("ngapp").controller("detailController", function(shared, menu, la
 
 
     $scope.startNavigation = function() {
-        if(shared.currentPokemon.catched != "true") {
-            if(launchnavigator) {
-                launchnavigator.navigate([shared.currentPokemon.latitude, shared.currentPokemon.longitude], {
-                    start: location.gps.latitude+","+location.gps.longitude
-                });
-            } else {
-                errorGettingLocation( language.str.notAbleToGetLocation );
-            }
+        if($scope.pokemon.latitude != null) {
+            launchnavigator.navigate([shared.currentPokemon.latitude, shared.currentPokemon.longitude], {
+                start: location.gps.latitude+","+location.gps.longitude
+            });
+
         } else {
-            errorGettingLocation( language.str.alreadyCatchedPokemon );
+            errorGettingLocation();
         }
     }
 
-    var errorGettingLocation = function(message) {
+    var errorGettingLocation = function() {
         $mdDialog.show(
             $mdDialog.alert()
                 .parent(angular.element(document.querySelector('#popupContainer')))
                 .clickOutsideToClose(true)
-                .title('Error')
-                .textContent(message)
+                .title('Error getting location')
+                .textContent('Our application was not able to get the location of your device!')
                 .ariaLabel('Alert Dialog')
-                .ok('OK')
+                .ok('Got it!')
         );
     }
 

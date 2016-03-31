@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdToast, $scope, $mdSidenav, $mdComponentRegistry, $state){
+angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdSidenav, $mdComponentRegistry){
 
     var ctrl = this;
 
@@ -35,29 +35,18 @@ angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $m
     }
 
     this.goBack = function() {
-        if($state) {
-            if($state.is("main")) {
-                if(navigator.app) {
-                    navigator.app.exitApp();
-                }
-            }else{
-                $mdToast.hide();
-                location.replace("#/main");
-                $scope.apply();
-            }
-        }else {
-            location.replace("#/main");
-            $scope.apply();
-        }
+        alert("test");
+        var event = new CustomEvent("backbutton");
+        document.dispatchEvent(event);
     }
 
     this.showPrompt = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
 
         var confirm = $mdDialog.prompt()
-            .title(language.str.yourName)
-            .textContent(shared.info.auth + language.str.isYourCurrentName )
-            .placeholder(language.str.newName)
+            .title('Your Name')
+            .textContent(shared.info.auth + ' is your current name')
+            .placeholder('New name')
             .ariaLabel('name')
             .targetEvent(ev)
             .ok('Update')

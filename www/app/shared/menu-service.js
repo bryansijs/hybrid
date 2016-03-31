@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdToast, $scope, $mdSidenav, $mdComponentRegistry, $state){
+angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdToast, $mdSidenav, $mdComponentRegistry, $state){
 
     var ctrl = this;
 
@@ -55,9 +55,9 @@ angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $m
         // Appending dialog to document.body to cover sidenav in docs app
 
         var confirm = $mdDialog.prompt()
-            .title(language.str.yourName)
-            .textContent(shared.info.auth + language.str.isYourCurrentName )
-            .placeholder(language.str.newName)
+            .title('Your Name')
+            .textContent(shared.info.auth + ' is your current name')
+            .placeholder('New name')
             .ariaLabel('name')
             .targetEvent(ev)
             .ok('Update')
