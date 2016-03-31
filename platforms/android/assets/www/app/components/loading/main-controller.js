@@ -7,6 +7,7 @@ angular.module("ngapp").controller("loadingController", function(shared,language
     data.checkForupdates();
 
     document.addEventListener("pokedex_ready", function(e) {
+        document.removeEventListener("pokedex_ready");
         location.replace("#/main");
     });
 

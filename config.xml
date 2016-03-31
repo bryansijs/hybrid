@@ -43,12 +43,9 @@
     <!--<feature name="http://api.phonegap.com/1.0/battery"/>-->
 	<!--<feature name="http://api.phonegap.com/1.0/camera"/>-->
 	<!--<feature name="http://api.phonegap.com/1.0/geolocation"/>-->
-	
 
 
-
-
-
+    <splash src="splash.png" />
 
 	
     <access origin="*" />

@@ -6,6 +6,7 @@ angular.module("ngapp").service("data", function($resource, shared, location){
     var pokemonCount = 15;
     var ctrl = this;
     var count = 1;
+    var busy = false;
 
     var getRandomNumber = function(number) {
         var scale = 7;
@@ -37,9 +38,9 @@ angular.module("ngapp").service("data", function($resource, shared, location){
             shared.pokemons[pokemon.id -1] = pokemon;
 
             count++;
-
-            if(count == pokemonCount) {
-
+            console.log("id =" + id + " pokemoncount = " +pokemonCount);
+            if(id == pokemonCount) {
+                busy = false;
                 var event = new CustomEvent("pokedex_ready");
                 document.dispatchEvent(event);
             }
@@ -62,7 +63,7 @@ angular.module("ngapp").service("data", function($resource, shared, location){
                 var event = new CustomEvent("pokedex_ready");
                 document.dispatchEvent(event);
 
-                updatePokemon();
+                ctrl.updatePokemon();
                 window.localStorage.setItem("lastUpdatedDay", today);
             } else {
                 for(var i = 1; i <= pokemonCount; i++) {
@@ -72,7 +73,7 @@ angular.module("ngapp").service("data", function($resource, shared, location){
             }
         } else {
             window.localStorage.setItem("lastUpdatedDay", today);
-            updatePokemon();
+            ctrl.updatePokemon();
         }
     };
 
@@ -80,9 +81,20 @@ angular.module("ngapp").service("data", function($resource, shared, location){
         window.localStorage.setItem("pokemon_"+pokemon.id , JSON.stringify(pokemon));
     }
 
-    var updatePokemon = function() {
-        for(var i = 1; i <= pokemonCount; i++) {
-            var poke = getPokemonFromApi(i);
+    this.updatePokemon = function(lastPokemonId) {
+        console.log("Trying to update");
+        if(!busy) {
+            console.log("updatePokemons Ongoing");
+            busy = true;
+            if(shared.pokemons.length == 0) {
+                pokemonCount = pokemonCount;
+            } else {
+                pokemonCount = pokemonCount + 10;
+            }
+
+            for(var i = shared.pokemons.length; i <= pokemonCount; i++) {
+                var poke = getPokemonFromApi(i);
+            }
         }
     }
 

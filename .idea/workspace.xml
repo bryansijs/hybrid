@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c723ce0d-12b4-4ce1-9180-1c6c20179821" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/components/loading/main-controller.js" afterPath="$PROJECT_DIR$/www/app/components/loading/main-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/components/main/main-controller.js" afterPath="$PROJECT_DIR$/www/app/components/main/main-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/components/main/main.html" afterPath="$PROJECT_DIR$/www/app/components/main/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/shared/data-service.js" afterPath="$PROJECT_DIR$/www/app/shared/data-service.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/www/assets/images/DPash.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
     </list>
     <ignored path="hybrid.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,8 +113,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76044226">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="66" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.5724816">
+              <caret line="42" column="64" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -142,7 +140,6 @@
       <list>
         <option value="$PROJECT_DIR$/www/app/components/loading/main.html" />
         <option value="$PROJECT_DIR$/www/app/components/detail/main.html" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/app/components/profile/main.html" />
         <option value="$PROJECT_DIR$/www/app/routes.js" />
         <option value="$PROJECT_DIR$/www/app/components/profile/main-controller.js" />
@@ -158,6 +155,7 @@
         <option value="$PROJECT_DIR$/www/app/components/main/main-controller.js" />
         <option value="$PROJECT_DIR$/www/app/components/main/main.html" />
         <option value="$PROJECT_DIR$/www/app/shared/data-service.js" />
+        <option value="$PROJECT_DIR$/config.xml" />
       </list>
     </option>
   </component>
@@ -167,8 +165,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="78" />
+    <option name="y" value="1072" />
     <option name="width" value="1296" />
     <option name="height" value="1000" />
   </component>
@@ -534,7 +532,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="78" y="1072" width="1296" height="1000" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37678856" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -925,8 +923,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76044226">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="66" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.5724816">
+          <caret line="42" column="64" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
           <folding />
         </state>
       </provider>
