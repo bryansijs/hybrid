@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdSidenav, $mdComponentRegistry, $state){
+angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdToast, $mdSidenav, $mdComponentRegistry, $state){
 
     var ctrl = this;
 
@@ -37,7 +37,9 @@ angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $m
     this.goBack = function() {
         if($state) {
             if($state.is("main")) {
-                navigator.app.exitApp();
+                if(navigator.app) {
+                    navigator.app.exitApp();
+                }
             }else{
                 $mdToast.hide();
                 location.replace("#/main");
