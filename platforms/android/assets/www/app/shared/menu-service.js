@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdToast, $scope, $mdSidenav, $mdComponentRegistry, $state){
+angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdToast, $mdSidenav, $mdComponentRegistry, $state){
 
     var ctrl = this;
 
@@ -43,11 +43,9 @@ angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $m
             }else{
                 $mdToast.hide();
                 location.replace("#/main");
-                $scope.apply();
             }
         }else {
             location.replace("#/main");
-            $scope.apply();
         }
     }
 
@@ -56,7 +54,7 @@ angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $m
 
         var confirm = $mdDialog.prompt()
             .title(language.str.yourName)
-            .textContent(shared.info.auth + language.str.isYourCurrentName )
+            .textContent(shared.info.auth +" " +language.str.isYourCurrentName )
             .placeholder(language.str.newName)
             .ariaLabel('name')
             .targetEvent(ev)

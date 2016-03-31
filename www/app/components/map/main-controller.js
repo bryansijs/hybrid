@@ -7,6 +7,9 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
     $scope.closestPokemon = {};
     var watchID;
 
+    $scope.message;
+    $scope.showMessage = false;
+
     $scope.map = {
         center: { latitude: location.gps.latitude, longitude: location.gps.longitude },
         zoom: 11,
@@ -37,26 +40,26 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
         checkSurrounding();
     }
 
-    var showToast = function(tekst) {
-
-        //show toast
-        $mdToast.show({
-            template: '<md-toast class="md-toast">' + $scope.closestPokemon.name + " " + tekst + '</md-toast>',
-            hideDelay: 120000,
-            position: 'top left'
-        });
-    }
-
-    var hideToast = function() {
-        //hide toast
-        $mdToast.hide();
-
-        //stop acceleration watch
-        if(watchID != null) {
-            navigator.accelerometer.clearWatch(watchID);
-            watchID = null;
-        }
-    }
+    //var showToast = function(tekst) {
+    //
+    //    //show toast
+    //    $mdToast.show({
+    //        template: '<md-toast class="md-toast">' + $scope.closestPokemon.name + " " + tekst + '</md-toast>',
+    //        hideDelay: 120000,
+    //        position: 'top left'
+    //    });
+    //}
+    //
+    //var hideToast = function() {
+    //    //hide toast
+    //    $mdToast.hide();
+    //
+    //    //stop acceleration watch
+    //    if(watchID != null) {
+    //        navigator.accelerometer.clearWatch(watchID);
+    //        watchID = null;
+    //    }
+    //}
 
     function distance(lat1, lon1, lat2, lon2) {
         var radlat1 = Math.PI * lat1/180
@@ -83,9 +86,10 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
 
                         if($scope.closestPokemon != shared.pokemons[i]) {
                             $scope.closestPokemon = shared.pokemons[i];
-                            $scope.$apply();
 
-                            showToast( $scope.lan.str.inYourNeighbourhood );
+                            $scope.message = $scope.closestPokemon.name + " " + $scope.lan.str.inYourNeighbourhood;
+                            $scope.showMessage = true;
+                            $scope.$apply();
 
                             //Start Accelerometer watch
                             if(navigator.accelerometer != null && watchID == null ) {
@@ -96,6 +100,7 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
                         return;
                 }
             }
+            $scope.showMessage = false;
             //stop watch
             if(watchID != null) {
                 navigator.accelerometer.clearWatch(watchID);
@@ -120,8 +125,7 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
                         $scope.$apply();
 
                         shared.pokemons[$scope.closestPokemon.id - 1].catched = "true";
-                        hideToast();
-                        showToast( $scope.lan.str.addedToInventory );
+                        $scope.message = $scope.closestPokemon.name + " " + $scope.lan.str.addedToInventory;
 
                         data.updatePokemonwithId(shared.pokemons[$scope.closestPokemon.id - 1]);
                         $scope.closestPokemon = null;

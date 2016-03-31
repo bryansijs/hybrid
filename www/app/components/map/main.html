@@ -11,9 +11,9 @@
         </ui-gmap-google-map>
     </md-content>
 
-    <div flex="10" style="background-color: #F44336;" layout="row" layout-align="center center" ng-click="goMap()">
+    <div flex="10" class='md-padding' style="background-color: #F44336;" layout="row" layout-align="center center" ng-show="showMessage" >
         <div>
-            <ng-md-icon icon="pin_drop" style="color:white;" md-48></ng-md-icon>
+            <h3 style="color: white;"> {{ message}}</h3>
         </div>
     </div>
 </div>
@@ -26,5 +26,4 @@
     <!--<ui-gmap-google-map center='map.center' zoom='map.zoom' draggable="true">-->
         <!--<ui-gmap-markers models="Markers" coords="'self'" icon="'icon'">-->
         <!--</ui-gmap-markers>-->
-    <!--</ui-gmap-google-map>-->
-<!--</div>-->
+    <!--</ui-gmap-google-map>-!--<div ng-incl
