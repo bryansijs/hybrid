@@ -1,7 +1,9 @@
 "use strict";
 
 angular.module("ngapp").controller("detailController", function(shared, menu, language, location, $state, $scope, $mdDialog){
+
     this.title = $state.current.title;
+
     $scope.name = shared.info.auth;
     $scope.menu = menu;
     $scope.lan = language;

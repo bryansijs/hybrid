@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdToast, $mdSidenav, $mdComponentRegistry, $state){
+angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $mdToast, $mdSidenav, $mdComponentRegistry, $state ){
 
     var ctrl = this;
 
