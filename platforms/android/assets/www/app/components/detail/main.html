@@ -47,11 +47,13 @@
                 <md-button ng-href="http://www.pokemon.com/nl/pokedex/{{ pokemon.name }}">{{ lan.str.moreInfo }}</md-button>
             </md-card-actions>
         </md-card>
+    </md-content>
 
 
-    <div flex="10" style="background-color: #F44336;" layout="row" layout-align="center center" ng-click="goMap()">
+
+    <div flex="10" style="background-color: #F44336;" layout="row" layout-align="center center" ng-click="startNavigation()">
         <div>
-            <ng-md-icon icon="pin_drop" style="color:white;" md-48></ng-md-icon>
+            <ng-md-icon icon="navigation" style="color:white;" md-48></ng-md-icon>
         </div>
     </div>
 </div>

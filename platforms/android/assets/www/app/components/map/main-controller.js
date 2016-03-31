@@ -18,7 +18,7 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
     var createMapMarkers = function() {
         var M = [];
         for(var i = 0; i < shared.pokemons.length; i++) {
-            if(shared.pokemons[i].longitude != null && shared.pokemons[i].latitude != null && shared.pokemons[i].catched != true ) {
+            if(shared.pokemons[i].longitude != 0 && shared.pokemons[i].latitude != 0 && shared.pokemons[i].catched != "true" ) {
                 var pointer = {};
                 pointer.id = i;
                 pointer.latitude = shared.pokemons[i].latitude;
@@ -110,15 +110,14 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
 
             if(acceleration.x > 10 || acceleration.y > 10 || acceleration.z > 10) {
 
-                shared.pokemons[$scope.closestPokemon.id - 1].latitude = null;
-                shared.pokemons[$scope.closestPokemon.id - 1].longitude = null;
+                shared.pokemons[$scope.closestPokemon.id - 1].latitude = 0;
+                shared.pokemons[$scope.closestPokemon.id - 1].longitude = 0;
 
                 for(var i = 0; i < $scope.Markers.length; i++) {
                     if(($scope.closestPokemon.id - 1) == $scope.Markers[i].id) {
                         $scope.Markers.splice(i, 1);
 
                         $scope.$apply();
-                        alert($scope.Markers.length);
 
                         shared.pokemons[$scope.closestPokemon.id - 1].catched = "true";
                         hideToast();

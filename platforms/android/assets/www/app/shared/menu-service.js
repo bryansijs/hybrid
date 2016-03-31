@@ -34,12 +34,18 @@ angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $m
         $mdSidenav("left").toggle();
     }
 
+    this.goBack = function() {
+        alert("test");
+        var event = new CustomEvent("backbutton");
+        document.dispatchEvent(event);
+    }
 
     this.showPrompt = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
+
         var confirm = $mdDialog.prompt()
             .title('Your Name')
-            .textContent(shared.name + ' is your current name')
+            .textContent(shared.info.auth + ' is your current name')
             .placeholder('New name')
             .ariaLabel('name')
             .targetEvent(ev)
