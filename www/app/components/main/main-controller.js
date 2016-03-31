@@ -4,8 +4,7 @@ angular.module("ngapp").controller("mainController", function(shared, menu, lang
 
     location.setLocation();
 
-    this.title = $state.current.title;
-
+    $scope.title = $state.current.title;
     $scope.name = shared.info.auth;
     $scope.menu = menu;
     $scope.lan = language;
