@@ -26,6 +26,6 @@ angular.module("ngapp").service("location", function(){ // One of The Ways To Sh
 
     };
 
-    ctrl.setLocation();
+    //ctrl.setLocation();
 
 });
