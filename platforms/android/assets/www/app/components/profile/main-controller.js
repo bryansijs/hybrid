@@ -2,7 +2,7 @@
 
 angular.module("ngapp").controller("profileController", function(shared, $mdToast, data,menu, language, $state, $scope, $mdDialog){
 
-    this.title = $state.current.title;
+    $scope.title = language.str.titleProfile;
     $scope.menu = menu;
     $scope.lan = language;
     $scope.shared = shared;

@@ -27,7 +27,14 @@ angular.module("ngapp").service("language", function(){ // One of The Ways To Sh
         inYourNeighbourhood: "Is near you. Throw your phone to catch him!",
         addedToInventory : "Added to inventory",
         moreInfo: "More info",
-        title_main: "Pokedex"
+        isYourCurrentName: "is Your Current Name",
+        yourName: "your name",
+        newName: "newName",
+        titleDetail: "Pokemon Details",
+        titleLoading: "Loading Screen",
+        titleProfile: "Profile Page",
+        alreadyCatchedPokemon: "Pokemon already Catched",
+        notAbleToGetLocation:"Not Able to get your device location"
     }
 
     var dutch = {
@@ -46,7 +53,14 @@ angular.module("ngapp").service("language", function(){ // One of The Ways To Sh
         inYourNeighbourhood: "is in de buurt. Gooi je telefoon om hem te vangen!",
         addedToInventory : "toegevoegd aan je verzameling",
         moreInfo: "Meer informatie",
-        title_main: "Pokedex Dutch"
+        isYourCurrentName: "is je huidige naam",
+        yourName: "Jou Naam",
+        newName: "newName",
+        titleDetail: "Pokemon Details",
+        titleLoading: "Laden pokemon",
+        titleProfile: "Profiel Pagina",
+        alreadyCatchedPokemon: "Je hebt deze pokemon al gevangen",
+        notAbleToGetLocation:"Niet mogelijk om de locatie op te vragen van je telefoon"
     }
 
     this.updatePreferredLanguage = function(language) {

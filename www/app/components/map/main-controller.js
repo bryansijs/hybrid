@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("ngapp").controller("mapController", function(shared, menu, data , language, location, $state, $scope, $mdToast){
-    this.title = $state.current.title;
+    $scope.title = $state.current.title;
     $scope.menu = menu;
     $scope.lan = language;
     $scope.closestPokemon = {};
