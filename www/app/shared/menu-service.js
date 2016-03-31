@@ -54,7 +54,7 @@ angular.module("ngapp").service("menu", function(shared, language, $mdDialog, $m
 
         var confirm = $mdDialog.prompt()
             .title(language.str.yourName)
-            .textContent(shared.info.auth + language.str.isYourCurrentName )
+            .textContent(shared.info.auth +" " +language.str.isYourCurrentName )
             .placeholder(language.str.newName)
             .ariaLabel('name')
             .targetEvent(ev)
