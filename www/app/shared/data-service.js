@@ -19,14 +19,28 @@ angular.module("ngapp").service("data", function($resource, shared, location, $s
     }
     
     var downloadPokemon = function(lastPokeCount) {
-            console.log("start function downloadPokemon :");
+        pokemons = [];
+        var pokemonCountOnDownload = ctrl.pokemonsCount;
+        console.log("start function downloadPokemon :");
          var loadedPokemons = ctrl.pokemonsCount;
          for(var i = loadedPokemons; i < lastPokeCount; i++) {
             
-            if(false && window.localStorage.getItem("pokemon_"+i)) {
+            if(window.localStorage.getItem("pokemon_"+i)) {
                 console.log("pokemon is in localstorage ");
-                pokemons[id] = JSON.parse(window.localStorage.getItem("pokemon_"+id));
+                pokemons[i] = JSON.parse(window.localStorage.getItem("pokemon_"+i));
                 ctrl.pokemonsCount++;
+
+                if(ctrl.pokemonsCount == lastPokeCount) {
+                    var count = ctrl.pokemonsCount - pokemonCountOnDownload;
+                    for(var i = 0; i < count; i++) {
+                        shared.pokemons.push(pokemons[(pokemonCountOnDownload + i)]);
+                    }
+
+                    setTimeout(function() {
+                        updateScreen();
+                    }, 1000);
+                    return;
+                }
             } else {
                 console.log("pokemon will be downloaded +  " + i);
                 var resource = $resource( url + i + "/").get();
@@ -51,8 +65,9 @@ angular.module("ngapp").service("data", function($resource, shared, location, $s
                     ctrl.pokemonsCount++;
                     
                     if(ctrl.pokemonsCount == lastPokeCount) {
-                        for(var i = 0; i < pokemons.length; i++) {
-                            shared.pokemons.push(pokemons[i]);
+                        var count = ctrl.pokemonsCount - pokemonCountOnDownload;
+                        for(var i = 0; i < count; i++) {
+                            shared.pokemons.push(pokemons[(pokemonCountOnDownload + i)]);
                         }  
                         updateScreen();
                         return;
@@ -139,6 +154,7 @@ angular.module("ngapp").service("data", function($resource, shared, location, $s
                     pokemon.order = data.order;
 
                     shared.pokemons[pokemon.id] = pokemon;
+                    console.log("Update following pokemon:",shared.pokemons[pokemon.id]);
                 });
         }
     }
@@ -151,34 +167,12 @@ angular.module("ngapp").service("data", function($resource, shared, location, $s
         console.log("numberOfPokemons = " + numberOfPokemons);
         
         var loadedPokemons = ctrl.pokemonsCount;
-        var newPokemons = loadedPokemons + numberOfPokemons; 
-        
-        // if(pokemonCountInMemory < numberOfPokemons) {
-        //        console.log("log: pokemoncountinMemory < numberOfPokemons");
-        //        ctrl.updateAllPokemons(ctrl.pokemonIn);
-        // }
-        
-        // for(var i = loadedPokemons; i < newPokemons; i++) {
-        //     //console.log("i = "+i + " --> loadedPokemons = "+ loadedPokemons + " --> newPokemons" + newPokemons);
-        //     getPokemon(i,newPokemons);
-        // }
+        var newPokemons = loadedPokemons + numberOfPokemons;
         
         downloadPokemon(newPokemons)
+
         
-        // setTimeout(function() {
-        //     console.log("timer checking for updating screen ==" + ctrl.pokemonsCount + " - " + newPokemons);
-        //     if(ctrl.pokemonsCount == newPokemons) {
-        //         for(var i = 0; i < pokemons.length; i++) {
-        //             shared.pokemons.push(pokemons[i]);
-        //         }  
-        //         updateScreen();
-        //         return;
-        //     }
-        // }, 600);
-        
-        //ctrl.checkForUpdates();
-        
-        
+        ctrl.checkForUpdates();
     }
     
     countPokemonInMemory();

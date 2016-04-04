@@ -1,11 +1,14 @@
 "use strict";
 
 angular.module("ngapp").controller("mapController", function(shared, menu, data , language, location, $state, $scope, $mdToast){
-    this.title = $state.current.title;
+    $scope.title = $state.current.title;
     $scope.menu = menu;
     $scope.lan = language;
     $scope.closestPokemon = {};
     var watchID;
+
+    $scope.message;
+    $scope.showMessage = false;
 
     $scope.map = {
         center: { latitude: location.gps.latitude, longitude: location.gps.longitude },
@@ -18,7 +21,7 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
     var createMapMarkers = function() {
         var M = [];
         for(var i = 0; i < shared.pokemons.length; i++) {
-            if(shared.pokemons[i].longitude != null && shared.pokemons[i].latitude != null && shared.pokemons[i].catched != true ) {
+            if(shared.pokemons[i].longitude != 0 && shared.pokemons[i].latitude != 0 && shared.pokemons[i].catched != "true" ) {
                 var pointer = {};
                 pointer.id = i;
                 pointer.latitude = shared.pokemons[i].latitude;
@@ -37,26 +40,26 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
         checkSurrounding();
     }
 
-    var showToast = function(tekst) {
-
-        //show toast
-        $mdToast.show({
-            template: '<md-toast class="md-toast">' + $scope.closestPokemon.name + " " + tekst + '</md-toast>',
-            hideDelay: 120000,
-            position: 'top left'
-        });
-    }
-
-    var hideToast = function() {
-        //hide toast
-        $mdToast.hide();
-
-        //stop acceleration watch
-        if(watchID != null) {
-            navigator.accelerometer.clearWatch(watchID);
-            watchID = null;
-        }
-    }
+    //var showToast = function(tekst) {
+    //
+    //    //show toast
+    //    $mdToast.show({
+    //        template: '<md-toast class="md-toast">' + $scope.closestPokemon.name + " " + tekst + '</md-toast>',
+    //        hideDelay: 120000,
+    //        position: 'top left'
+    //    });
+    //}
+    //
+    //var hideToast = function() {
+    //    //hide toast
+    //    $mdToast.hide();
+    //
+    //    //stop acceleration watch
+    //    if(watchID != null) {
+    //        navigator.accelerometer.clearWatch(watchID);
+    //        watchID = null;
+    //    }
+    //}
 
     function distance(lat1, lon1, lat2, lon2) {
         var radlat1 = Math.PI * lat1/180
@@ -83,9 +86,10 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
 
                         if($scope.closestPokemon != shared.pokemons[i]) {
                             $scope.closestPokemon = shared.pokemons[i];
-                            $scope.$apply();
 
-                            showToast( $scope.lan.str.inYourNeighbourhood );
+                            $scope.message = $scope.closestPokemon.name + " " + $scope.lan.str.inYourNeighbourhood;
+                            $scope.showMessage = true;
+                            $scope.$apply();
 
                             //Start Accelerometer watch
                             if(navigator.accelerometer != null && watchID == null ) {
@@ -96,6 +100,7 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
                         return;
                 }
             }
+            $scope.showMessage = false;
             //stop watch
             if(watchID != null) {
                 navigator.accelerometer.clearWatch(watchID);
@@ -110,19 +115,17 @@ angular.module("ngapp").controller("mapController", function(shared, menu, data 
 
             if(acceleration.x > 10 || acceleration.y > 10 || acceleration.z > 10) {
 
-                shared.pokemons[$scope.closestPokemon.id - 1].latitude = null;
-                shared.pokemons[$scope.closestPokemon.id - 1].longitude = null;
+                shared.pokemons[$scope.closestPokemon.id - 1].latitude = 0;
+                shared.pokemons[$scope.closestPokemon.id - 1].longitude = 0;
 
                 for(var i = 0; i < $scope.Markers.length; i++) {
                     if(($scope.closestPokemon.id - 1) == $scope.Markers[i].id) {
                         $scope.Markers.splice(i, 1);
 
                         $scope.$apply();
-                        alert($scope.Markers.length);
 
                         shared.pokemons[$scope.closestPokemon.id - 1].catched = "true";
-                        hideToast();
-                        showToast( $scope.lan.str.addedToInventory );
+                        $scope.message = $scope.closestPokemon.name + " " + $scope.lan.str.addedToInventory;
 
                         data.updatePokemonwithId(shared.pokemons[$scope.closestPokemon.id - 1]);
                         $scope.closestPokemon = null;

@@ -2,7 +2,7 @@
 
 angular.module("ngapp").controller("profileController", function(shared, $mdToast, data,menu, language, $state, $scope, $mdDialog){
 
-    this.title = $state.current.title;
+    $scope.title = language.str.titleProfile;
     $scope.menu = menu;
     $scope.lan = language;
     $scope.shared = shared;
@@ -24,10 +24,9 @@ angular.module("ngapp").controller("profileController", function(shared, $mdToas
                 window.localStorage['profilePicture'] = imageData;
                 $scope.pictureSrc = imageData;
                 $scope.$apply();
-            }, function(error) {alert(error) }, { quality: 50,
+            }, function(error) { cameraError("Error getting photo") }, { quality: 50,
                 destinationType: Camera.DestinationType.FILE_URI });
         } else {
-            alert("2");
             cameraError("Platform not supported");
         }
     }
@@ -59,7 +58,7 @@ angular.module("ngapp").controller("profileController", function(shared, $mdToas
                 group.push(shared.pokemons[i]);
             }
 
-            if(count == 3) {
+            if(count == 3 || i == (shared.pokemons.length -1)) {
                 count = 0;
                 $scope.pokemonGroups.push(group);
                 group = [];

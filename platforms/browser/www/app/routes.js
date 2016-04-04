@@ -1,13 +1,13 @@
 "use strict";
 
-angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider, language){
+angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
 
     $urlRouterProvider.otherwise("/loading");
 
     $stateProvider.state("main", {
         url: "/main",
         templateUrl: "app/components/main/main.html",
-        title: "Pokedex",
+        title: "Pokedex" ,
         controller: "mainController",
         controllerAs: "main"
     }).state("detail",{
@@ -19,7 +19,7 @@ angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function
     }).state("map", {
         url: "/map",
         templateUrl: "app/components/map/main.html",
-        title: "Pokedex Detail Page",
+        title: "Pokedex Map",
         controller: "mapController",
         controllerAs: "main"
     }).state("loading", {

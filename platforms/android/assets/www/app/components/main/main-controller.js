@@ -12,31 +12,18 @@ angular.module("ngapp").controller("mainController", function(shared, menu, lang
     $scope.loadingMore = true;
     $scope.loading_bar = false;
 
-    $scope.pokemons = {
-        data: shared.pokemons,
-
-        getItemAtIndex: function(index) {
-            return this.data[index];
-        },
-
-        getLength: function() {
-            return this.data.length + 5;
-        },
-
-        fetchMoreItems: function(index) {
-
-        }
-    }
-
     $scope.init = function() {
         language.setLanguage();
         console.log(shared.pokemons);
-
-        document.addEventListener("pokedex_ready", function(e) {
+    }
+    
+     document.addEventListener("data_update", function(e) {
+         console.log("Data update event function started");
+            console.log(shared.pokemons);
             $scope.loadingMore = true;
             $scope.loading_bar = false;
-        });
-    }
+            $scope.$applyAsync();
+     });
 
     $scope.goDetail = function(pokemon) {
         shared.currentPokemon = pokemon;
@@ -50,6 +37,6 @@ angular.module("ngapp").controller("mainController", function(shared, menu, lang
     $scope.loadMoreItems = function() {
         $scope.loadingMore = false;
         $scope.loading_bar = true;
-        data.updatePokemon();
+        data.getPokemons(6);
     }
 });

@@ -5,7 +5,7 @@
 
   <md-content flex class='md-padding'>
     <md-list >
-        <md-list-item class="md-3-line" ng-repeat="pokemon in shared.pokemons track by $index" >
+        <md-list-item class="md-3-line" ng-repeat="pokemon in shared.pokemons track by $index" ng-if="$index >= 1">
           <img src="{{ pokemon.sprites.front_default }}"/>
           <div class="md-list-item-text" layout="column" ng-click="goDetail(pokemon)">
               <h3>{{ pokemon.name }}</h3>

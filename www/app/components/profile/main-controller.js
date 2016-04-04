@@ -58,7 +58,7 @@ angular.module("ngapp").controller("profileController", function(shared, $mdToas
                 group.push(shared.pokemons[i]);
             }
 
-            if(count == 3) {
+            if(count == 3 || i == (shared.pokemons.length -1)) {
                 count = 0;
                 $scope.pokemonGroups.push(group);
                 group = [];

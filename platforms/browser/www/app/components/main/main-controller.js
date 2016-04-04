@@ -1,25 +1,42 @@
 "use strict";
 
-angular.module("ngapp").controller("mainController", function(shared, menu, language, data, $state, $scope){
+angular.module("ngapp").controller("mainController", function(shared, menu, language, location, data, $state, $scope){
 
-    this.title = $state.current.title;
+    location.setLocation();
 
+    $scope.title = $state.current.title;
     $scope.name = shared.info.auth;
     $scope.menu = menu;
     $scope.lan = language;
+    $scope.shared = shared;
+    $scope.loadingMore = true;
+    $scope.loading_bar = false;
 
     $scope.init = function() {
         language.setLanguage();
-        $scope.pokemons = shared.pokemons;
         console.log(shared.pokemons);
     }
+    
+     document.addEventListener("data_update", function(e) {
+         console.log("Data update event function started");
+            console.log(shared.pokemons);
+            $scope.loadingMore = true;
+            $scope.loading_bar = false;
+            $scope.$applyAsync();
+     });
 
     $scope.goDetail = function(pokemon) {
         shared.currentPokemon = pokemon;
-        location.replace("#/map");
+        window.location.replace("#/detail");
     }
 
     $scope.goMap = function() {
-        location.replace("#/detail");
+        window.location.replace("#/map");
+    }
+
+    $scope.loadMoreItems = function() {
+        $scope.loadingMore = false;
+        $scope.loading_bar = true;
+        data.getPokemons(6);
     }
 });

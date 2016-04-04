@@ -4,10 +4,10 @@ angular.module("ngapp").controller("loadingController", function(shared,language
     $scope.lan = language;
     $scope.title = language.str.titleLoading;
 
-    data.checkForupdates();
+    data.getPokemons(15);
 
     document.addEventListener("pokedex_ready", function(e) {
-        document.removeEventListener("pokedex_ready");
+        //document.removeEventListener("pokedex_ready");
         location.replace("#/main");
     });
 

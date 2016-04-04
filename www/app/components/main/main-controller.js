@@ -22,7 +22,7 @@ angular.module("ngapp").controller("mainController", function(shared, menu, lang
             console.log(shared.pokemons);
             $scope.loadingMore = true;
             $scope.loading_bar = false;
-            $scope.$apply();
+            $scope.$applyAsync();
      });
 
     $scope.goDetail = function(pokemon) {
